@@ -359,7 +359,7 @@ func (b *Bridge) loop() {
 
 		// Messages from IRC to Discord
 		case msg := <-b.discordMessagesChan:
-			mapping, ok := b.GetMappingByIRC(msg.IRCChannel)
+			mapping, ok := b.GetMappingByIRC(strings.ToLower(msg.IRCChannel))
 
 			if !ok {
 				log.Warnln("Ignoring message sent from an unhandled IRC channel.")
